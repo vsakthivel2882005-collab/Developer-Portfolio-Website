@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>Sakthivel V | Developer Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root{
+  --bg:#080808;
+  --card:#111111;
+  --gold:#d4af37;
+  --gold-light:#f5df91;
+  --white:#f5f5f5;
+  --muted:#a5a5a5;
+  --border:rgba(212,175,55,.22);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  line-height:1.7;
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,90%);margin:auto}
+.gold{color:var(--gold)}
+.section{padding:100px 0}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,5vw,48px);
+  margin-bottom:12px;
+}
+.section-subtitle{color:var(--muted);margin-bottom:40px}
+.line{
+  width:65px;height:3px;background:var(--gold);
+  margin:15px 0 25px;border-radius:5px
+}
+
+/* NAVIGATION */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:rgba(8,8,8,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+nav{
+  height:76px;display:flex;align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:25px;font-weight:800;color:var(--gold)
+}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:14px;color:#ddd;transition:.3s}
+.nav-links a:hover{color:var(--gold)}
+.menu-btn{
+  display:none;background:none;border:1px solid var(--border);
+  color:var(--gold);font-size:25px;padding:3px 12px;
+  border-radius:8px;cursor:pointer
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;padding:12px 25px;
+  border-radius:5px;font-weight:700;
+  transition:.3s;border:1px solid var(--gold);
+  cursor:pointer;font-family:inherit;font-size:14px
+}
+.btn-primary{background:var(--gold);color:#090909}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-3px)}
+.btn-outline{color:var(--gold);background:transparent}
+.btn-outline:hover{background:var(--gold);color:#090909}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:130px 0 80px;
+  background:
+  radial-gradient(ellipse at 80% 35%,rgba(212,175,55,.12),transparent 40%),
+  linear-gradient(135deg,#080808,#101010);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.3fr .7fr;
+  gap:50px;align-items:center
+}
+.tag{
+  display:inline-block;border:1px solid var(--border);
+  color:var(--gold);padding:7px 15px;border-radius:30px;
+  font-size:12px;letter-spacing:2px;margin-bottom:22px
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,7vw,76px);line-height:1.12;
+  margin-bottom:20px
+}
+.hero p{color:var(--muted);max-width:580px;font-size:17px}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hero-card{
+  border:1px solid var(--border);border-radius:20px;
+  padding:35px;background:linear-gradient(145deg,#171717,#0c0c0c);
+  text-align:center;box-shadow:0 20px 70px #000
+}
+.avatar{
+  width:180px;height:180px;border-radius:50%;
+  margin:0 auto 22px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:60px;
+  color:var(--gold);border:2px solid var(--gold);
+  background:radial-gradient(circle,#28200b,#111);
+  box-shadow:0 0 35px rgba(212,175,55,.15)
+}
+.hero-card h3{font-family:'Playfair Display',serif;font-size:23px}
+.hero-card p{font-size:13px;margin:5px auto;color:var(--muted)}
+.socials{display:flex;justify-content:center;gap:12px;margin-top:20px}
+.socials a{
+  width:38px;height:38px;border:1px solid var(--border);
+  display:grid;place-items:center;border-radius:50%;
+  color:var(--gold);font-size:13px
+}
+.socials a:hover{background:var(--gold);color:#000}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.about-text{color:var(--muted)}
+.info-list{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:25px}
+.info-item{border-bottom:1px solid var(--border);padding:12px 0}
+.info-item strong{display:block;color:var(--gold);font-size:13px}
+.info-item span{font-size:14px;color:#ddd;overflow-wrap:anywhere}
+.about-box{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:30px
+}
+.about-box h3{font-family:'Playfair Display',serif;margin-bottom:15px}
+.about-box p{color:var(--muted);font-size:14px}
+
+/* SKILLS */
+.skills-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+}
+.skill-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:25px;transition:.3s
+}
+.skill-card:hover,.project-card:hover{
+  transform:translateY(-7px);border-color:var(--gold)
+}
+.skill-icon{font-size:27px;margin-bottom:12px}
+.skill-card h3{color:var(--gold);margin-bottom:8px}
+.skill-card p{font-size:13px;color:var(--muted)}
+
+/* PROJECTS */
+.projects-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:22px
+}
+.project-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;transition:.3s
+}
+.project-visual{
+  height:180px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#211b0d,#101010);
+  color:var(--gold);font-size:48px
+}
+.project-content{padding:25px}
+.project-content h3{
+  font-family:'Playfair Display',serif;font-size:22px
+}
+.project-content p{color:var(--muted);font-size:14px;margin:10px 0 18px}
+.project-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.project-tags span{
+  color:var(--gold);background:#211c0e;
+  border:1px solid var(--border);padding:4px 9px;
+  border-radius:20px;font-size:11px
+}
+.project-link{color:var(--gold);font-size:13px;font-weight:700}
+
+/* RESUME */
+.resume-box{
+  border:1px solid var(--border);border-radius:15px;
+  background:linear-gradient(120deg,#17140c,#101010);
+  padding:45px;text-align:center
+}
+.resume-box h3{font-family:'Playfair Display',serif;font-size:30px}
+.resume-box p{color:var(--muted);margin:12px auto 25px;max-width:600px}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px}
+.contact-info,.contact-form{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:30px
+}
+.contact-info h3,.contact-form h3{
+  font-family:'Playfair Display',serif;font-size:24px;margin-bottom:20px
+}
+.contact-item{margin:20px 0}
+.contact-item strong{display:block;color:var(--gold);font-size:13px}
+.contact-item a,.contact-item span{color:#ddd;font-size:14px;overflow-wrap:anywhere}
+input,textarea{
+  width:100%;padding:14px;margin-bottom:15px;
+  background:#080808;border:1px solid #333;
+  color:white;border-radius:5px;font-family:inherit;
+  outline:none
+}
+input:focus,textarea:focus{border-color:var(--gold)}
+textarea{height:130px;resize:vertical}
+footer{
+  border-top:1px solid var(--border);
+  padding:25px 0;text-align:center;color:var(--muted);
+  font-size:13px
+}
+footer span{color:var(--gold)}
+
+/* MOBILE */
+@media(max-width:800px){
+  .menu-btn{display:block}
+  .nav-links{
+    display:none;position:absolute;top:76px;left:0;width:100%;
+    background:#101010;padding:25px 5%;
+    flex-direction:column;gap:18px;
+    border-bottom:1px solid var(--border)
+  }
+  .nav-links.active{display:flex}
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero{text-align:center}
+  .hero p{margin:auto}
+  .hero-buttons{justify-content:center}
+  .hero-card{max-width:400px;margin:auto;width:100%}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .projects-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .section{padding:75px 0}
+  .skills-grid{grid-template-columns:1fr}
+  .info-list{grid-template-columns:1fr}
+  .resume-box{padding:28px 18px}
+  .contact-info,.contact-form{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">SAKTHI<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">WELCOME TO MY PORTFOLIO</span>
+      <h1>Hi, I'm <span class="gold">Sakthivel V</span></h1>
+      <h2>Computer Science Student & <span class="gold">Web Developer</span></h2>
+      <div class="line"></div>
+      <p>
+        I am passionate about technology, web development and creating
+        modern digital experiences. I enjoy turning ideas into useful,
+        responsive and user-friendly websites.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">Explore My Work</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="avatar">SV</div>
+      <h3>Sakthivel V</h3>
+      <p>BE Computer Science and Engineering</p>
+      <p>JKKN College of Engineering and Technology</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/cdm_killer_sakthi_07/" target="_blank" aria-label="Instagram">IG</a>
+        <a href="https://github.com/" target="_blank" aria-label="GitHub">GH</a>
+        <a href="mailto:vsakthi2882006@gmail.com" aria-label="Email">@</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <h2 class="section-title">About <span class="gold">Me</span></h2>
+    <div class="line"></div>
+    <div class="about-grid">
+      <div>
+        <p class="about-text">
+          Hello! I'm Sakthivel V, a Computer Science and Engineering
+          student interested in software development and modern web
+          technologies. I like learning new technologies and building
+          practical projects that solve everyday problems.
+          <br><br>
+          My goal is to grow as a developer, improve my technical skills
+          and create meaningful digital products.
+        </p>
+        <div class="info-list">
+          <div class="info-item"><strong>NAME</strong><span>Sakthivel V</span></div>
+          <div class="info-item"><strong>DEGREE</strong><span>BE - CSE</span></div>
+          <div class="info-item"><strong>COLLEGE</strong><span>JKKN College of Engineering and Technology</span></div>
+          <div class="info-item"><strong>INTEREST</strong><span>Web Development</span></div>
+        </div>
+      </div>
+      <div class="about-box">
+        <h3>My Career Objective</h3>
+        <p>
+          To build a career in the technology field where I can apply
+          my programming knowledge, develop real-world applications,
+          learn continuously and contribute to innovative projects.
+        </p>
+        <br>
+        <h3>What I Do</h3>
+        <p>
+          Website development, responsive UI design, programming practice,
+          project development and exploring new technologies.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <h2 class="section-title">My <span class="gold">Skills</span></h2>
+    <p class="section-subtitle">Technologies and tools I work with and continue to learn.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <h3>HTML5</h3>
+        <p>Building structured and accessible web pages.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <h3>CSS3</h3>
+        <p>Responsive layouts, styling and modern UI design.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚡</div>
+        <h3>JavaScript</h3>
+        <p>Interactive web features and frontend functionality.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">☕</div>
+        <h3>Java</h3>
+        <p>Programming fundamentals and object-oriented concepts.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <h3>Database</h3>
+        <p>Learning database concepts and data management.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <h3>Git & GitHub</h3>
+        <p>Source code management and project publishing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="container">
+    <h2 class="section-title">My <span class="gold">Projects</span></h2>
+    <p class="section-subtitle">Selected development projects and work.</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-visual">🍔</div>
+        <div class="project-content">
+          <h3>My Food App</h3>
+          <p>A food ordering web application concept with menu browsing,
+          cart, customer accounts and order management features.</p>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Supabase</span>
+          </div>
+          <a class="project-link" href="https://my-food-app-vsakthi2882006-6468s-projects.vercel.app/" target="_blank">VIEW PROJECT ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">👨‍💻</div>
+        <div class="project-content">
+          <h3>Employee Management System</h3>
+          <p>A web project focused on organizing employee information
+          and simplifying employee record management.</p>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <a class="project-link" href="https://vsakthivel2005-collab.github.io/Employee-Management-System-/" target="_blank">VIEW PROJECT ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">🛒</div>
+        <div class="project-content">
+          <h3>E-Commerce Website</h3>
+          <p>A shopping website project concept featuring product
+          presentation, product categories and shopping interface.</p>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <span class="project-link">PROJECT LINK TO BE ADDED</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">🎓</div>
+        <div class="project-content">
+          <h3>Student Management Portal</h3>
+          <p>A student portal project concept for displaying and
+          managing student-related information.</p>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <span class="project-link">PROJECT LINK TO BE ADDED</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section class="section" id="resume">
+  <div class="container">
+    <div class="resume-box">
+      <h3>Let's Explore My <span class="gold">Resume</span></h3>
+      <p>
+        Interested in my education, skills and projects?
+        View or download my resume using the button below.
+      </p>
+      <a href="resume.pdf" class="btn btn-primary" download>⬇ Download Resume</a>
+      <p style="font-size:12px;margin-top:15px">
+        Add your resume PDF as <b>resume.pdf</b> in the same folder as index.html.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact <span class="gold">Me</span></h2>
+    <p class="section-subtitle">Have a project or opportunity? Let's connect.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <div class="contact-item">
+          <strong>EMAIL</strong>
+          <a href="mailto:vsakthi2882006@gmail.com">vsakthi2882006@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <strong>INSTAGRAM</strong>
+          <a href="https://www.instagram.com/cdm_killer_sakthi_07/" target="_blank">@cdm_killer_sakthi_07</a>
+        </div>
+        <div class="contact-item">
+          <strong>GITHUB</strong>
+          <a href="https://github.com/" target="_blank">Visit GitHub</a>
+        </div>
+        <div class="contact-item">
+          <strong>AVAILABILITY</strong>
+          <span>Open to learning, collaboration and opportunities.</span>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <h3>Send a Message</h3>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" placeholder="Your Message..." required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message ↗</button>
+        <p style="font-size:12px;color:#999;margin-top:12px">
+          This form opens your email app to send the message.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> <span>Sakthivel V</span>. All Rights Reserved.</p>
+    <p>Designed with <span>✦</span> Black & Gold Luxury Style</p>
+  </div>
+</footer>
+
+<script>
+// MOBILE MENU
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  menuBtn.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    menuBtn.textContent = "☰";
+  });
+});
+
+// CURRENT YEAR
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// CONTACT FORM - OPENS EMAIL APP
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const subject = document.getElementById("subject").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const body =
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n\n" +
+    "Message:\n" + message;
+
+  const mailto =
+    "mailto:vsakthi2882006@gmail.com" +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  window.location.href = mailto;
+});
+</script>
+
+</body>
+  </html>
+  
